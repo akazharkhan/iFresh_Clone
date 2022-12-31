@@ -41,7 +41,8 @@ export default memo(UiButton);
 
 const styles = StyleSheet.create({
     button: {
-        padding: 8,
+        padding: 10,
+        borderRadius:8,
         width: '100%',
         justifyContent: 'center'
     }

@@ -1,25 +1,26 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import ViewContainer from '../../components/HOC/ViewContainer'
 import icons from '../../constants/icons'
 import Paragraph from '../../components/UI/Paragraph'
 import ScrollContainer from '../../components/HOC/ScrollContainer'
 import Swiper from 'react-native-swiper'
+import Clickable from '../../components/HOC/Clickable'
 
-const Home = () => {
+const Home = ({navigation}) => {
     return (
         <ViewContainer>
             <View style={styles.menu}>
-                <View style={styles.menu1}>
+                <TouchableOpacity onPress={()=>navigation.toggleDrawer()} style={styles.menu1}>
                     <Image style={styles.imgmenu} source={icons.menuimage}></Image>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.menu2}>
                     <Paragraph style={styles.para}>𝐢𝐅𝐫𝐞𝐬𝐡</Paragraph>
                 </View>
-                <View style={styles.menu3}>
+                <Clickable onPress={()=>navigation.navigate("Cart")} style={styles.menu3}>
                     <Image style={styles.imgcart}
                         source={icons.cartimage}></Image>
-                </View>
+                </Clickable>
             </View>
 
             <ScrollView>
@@ -46,52 +47,56 @@ const Home = () => {
                 </View>
                 <View style={styles.fruitdry}>
                     <View style={styles.fruit}>
-                        <View style={styles.fruit1}>
+                        {/* <View style={styles.fruit1}> */}
                             <Image style={styles.fruitimg} source={icons.fruitsimage}></Image>
-                        </View>
+                        {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text>FRUITS & VEGETABLES</Text>
+                            <Text style={{textAlign:'center'}}>FRUITS & VEGETABLES</Text>
                         </View>
                     </View>
                     <View style={styles.dry}>
-                        <View style={styles.dry1}>
+                        {/* <View style={styles.dry1}> */}
                             <Image style={styles.dryimg} source={icons.dryimage}></Image>
-                        </View>
+                        {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text> Dry FRUITS </Text>
+                            <Text style={{textAlign:'center'}}> DRY FRUITS </Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.Img}>
                     <Image style={styles.img} source={icons.swiper3}></Image>
                 </View>
-                <View style={styles.Img1}>
-                    <Image style={styles.img1} source={icons.swiper2}></Image>
+                <View>
+                    <View style={styles.Img1}>
+                        <Image style={styles.img1} source={icons.swiper1}></Image>
+                    </View>
                 </View>
+
                 <View style={styles.mainContainer}>
                     <View style={styles.main}>
                         <View style={styles.feature}>
-                            <View style={styles.feature1}><Paragraph style={styles.feature1}>Feature Product</Paragraph></View>
+                            <View style={styles.feature1}><Paragraph style={styles.featuretext}>Feature Product</Paragraph></View>
                             <View style={styles.all}><Paragraph style={styles.all1}>View All</Paragraph></View>
                         </View>
-                        <View style={styles.redChilli}>
-                            <View style={styles.green}>
-                                <Image style={{ width: 80, height: 80, alignItems: "center" }} source={icons.greenimage}></Image>
-                                <Paragraph style={{ marginTop: 10, }} >Green chilli</Paragraph>
+                    </View>
+                    <View style={styles.product}>
+                        <View style={styles.chilli}>
+                            <Image style={styles.chiliimg} source={icons.greenimage}></Image>
+                            <Paragraph style={styles.chilitext}>Green chilli</Paragraph>
+                        </View>
+                        <View style={styles.otherproduct}>
+                            <View style={styles.onion}>
+                                <Image style={styles.onionimg} source={icons.onionimage}></Image>
+                                <Paragraph style={styles.oniontext}>An Onion</Paragraph>
                             </View>
-                            <View style={{ height: 250, alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-                                <View style={{ elevation: 1, height: 125, width: 120, alignItems: "center", justifyContent: "center", borderColor: "white" }}>
-                                    <Image style={{ width: 80, height: 80 }} source={icons.onionimage}></Image>
-                                    <Paragraph style={{ marginTop: 10, }}>Green chilli</Paragraph>
-                                </View>
-                                <View style={{ elevation: 2, width: 120, alignItems: "center", justifyContent: "center", borderColor: "white" }}>
-                                    <Image style={{ width: 80, height: 80 }} source={icons.potatoimage}></Image>
-                                    <Paragraph style={{ marginTop: 10, }} >Green chilli</Paragraph>
-                                </View>
+                            <View style={styles.onion}>
+                                <Image style={styles.onionimg} source={icons.potatoimage}></Image>
+                                <Paragraph style={styles.potatotext}>A Potato</Paragraph>
                             </View>
                         </View>
                     </View>
                 </View>
+                <View style={{height:50,}}></View>
 
 
 
@@ -105,25 +110,46 @@ const Home = () => {
 export default Home
 
 const styles = StyleSheet.create({
-    redChilli: {
-        height: 250,
-        width: 280,
-        // alignItems:"center",
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    green: {
-        borderWidth: 1,
+    chilli: {
+        // borderWidth: 1,
+        width: "50%",
+        height:250,
+        alignItems: "center",
+        justifyContent: "center",
         borderColor: "white",
-        height: 240,
-        width: 120, elevation: 1, alignItems: "center", justifyContent: "center",marginLeft:15
-    },
+        elevation: 1,
 
+    }
+    ,
+    chiliimg: {
+        width: 100,
+        height: 100,
+    },
+    onionimg:{
+        width:60,
+        height:60,
+    },
+    otherproduct:{
+        flexDirection:"column",
+        width:"50%",
+        alignItems:"center",
+        justifyContent:"space-between"
+    },
+    onion:{
+        borderColor:"white",
+        borderWidth:1,
+        width:"90%",
+        height:121,
+        alignItems:"center",
+        justifyContent:"space-around",
+        margin:3,
+        elevation:1
+    },
     menu: {
         width: "100%",
-        padding: 20,
-        height: 80,
-        backgroundColor: "#17B455",
+        padding: 8,
+        height: 50,
+        backgroundColor: "#0AB252",
         flexDirection: "row",
         // width:200
     },
@@ -131,10 +157,10 @@ const styles = StyleSheet.create({
         width: "20%",
     },
     menu2: {
-        width: "70%",
+        width: "65%",
     },
     menu3: {
-        width: "10%"
+        width: "15%"
     },
 
     imgmenu: {
@@ -142,6 +168,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#17B455",
         color: "#17B455",
         width: 40,
+        tintColor:"white"
     }, para: {
         fontSize: 30,
         color: "white",
@@ -150,6 +177,7 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: "#17B455",
         width: 40,
+        tintColor:"white"
     },
     loc: {
         height: 50,
@@ -170,16 +198,17 @@ const styles = StyleSheet.create({
         width: 20
     },
     swiper: {
-        height: 190,
+        height: 150,
     },
     swipeimage: {
         width: "100%",
-        height: 150,
+        height:'100%',
         resizeMode: "cover"
     },
     shop: {
         // alignItems:'center'
-        width: "100%"
+        // width: "100%"
+        marginVertical:20
     },
     para1: {
         textAlign: "center",
@@ -187,34 +216,32 @@ const styles = StyleSheet.create({
     fruitdry: {
         marginVertical: 20,
         width: "100%",
-        height: 150,
         flexDirection: "row",
         justifyContent: "space-around",
     },
     fruit: {
+        padding:10,
         alignItems: "center",
         justifyContent: "center",
-        elevation: 1,
-        width: "45%"
-        , borderColor: "white",
-        height: 150
+        elevation: 2,
+        width: "45%",
+        borderColor: "white",
     },
     fruitimg: {
-        width: 90,
-        height: 90,
+        width: 100,
+        height: 100,
     },
     dry: {
+        padding:10,
         alignItems: "center",
-        elevation: 1,
+        elevation: 2,
         width: "45%",
         justifyContent: "center",
         borderColor: "white",
-        height: 150
-
     },
     dryimg: {
-        width: 90,
-        height: 90,
+        width: 100,
+        height: 100,
     },
     fruit2: {
         fontSize: 10,
@@ -222,28 +249,37 @@ const styles = StyleSheet.create({
         fontFamily: "600"
     },
     Img: {
-        // width: "100%",
-        height: 150
+        width: "100%",
+        // width:700,
+        // height: 150
+        marginBottom: 15,
 
     },
     img: {
-        height: 150,
-        resizeMode: "contain"
+        // height:180,
+        resizeMode: "cover",
+
+        width: "100%",
+
     },
     img1: {
-        height: 150,
+        // height: 150,
         resizeMode: "cover",
-        width: 395,
+        width: "100%",
+        height: 120,
+        borderWidth: 1,
 
     },
     Img1: {
+        // marginBottom: 10,
+
         // width: "100%",
-        height: 150
+        // height: 150
     },
     mainContainer: {
         // width: '100%',
-        height: 400,
-        width:350,
+        height: 350,
+        // width:350,
         alignItems: "center",
         borderColor: "white", marginBottom: 20,
         margin: 10,
@@ -251,34 +287,55 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     main: {
-        // width: "90%",
-        borderColor: "white",
-        elevation: 2,
-        marginTop: 20,
+        width: "100%",
+
+        // borderWidth:1,
+        // borderColor: "white",
+        // elevation: 2,
+        // marginTop: 10,
+        marginBottom:10,
         // borderWidth: 1,
+        padding:10,
         // elevation:2,
 
     }, feature: {
-        padding: 10,
+        // padding: 10,
         flexDirection: "row",
         justifyContent: "space-between"
     },
-    feature1: {
+    feature1:{
+        alignItems:"center"
+    },
+    featuretext: {
         color: "green",
+        // marginTop:7,
         fontSize: 18,
+        textAlign:"center",
+        alignItems:"center"
+
 
 
     },
     all: {
         // borderWidth:1,
         backgroundColor: "#17B455",
-        padding: 8,
+        padding: 5,
         borderRadius: 10,
     },
     all1: {
         color: "white"
 
     },
+    product: {
+        width: "95%",
+        // height:300,
+        alignItems:"center",
+        justifyContent:"space-between",
+        flexDirection: "row",
+        // borderWidth:1,
+        // borderWidth:1,
+        // margin
+    }
 
 
 

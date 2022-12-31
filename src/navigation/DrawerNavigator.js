@@ -1,11 +1,14 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import CustomDrawer from '../components/HOC/CustomDrawer';
+import TabNavigator from './TabNavigator';
+
+const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
     return (
-        <View>
-            <Text>DrawerNavigator</Text>
-        </View>
+        <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />} screenOptions={{ headerShown: false }}>
+            <Drawer.Screen name='TabNavigator' component={TabNavigator} />
+        </Drawer.Navigator>
     )
 }
 
