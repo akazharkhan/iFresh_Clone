@@ -17,7 +17,7 @@ const Category = ({navigation}) => {
         </View>
       </View>
       <View style={styles.fruitdry}>
-                    <Clickable style={styles.fruit}>
+                    <Clickable onPress={()=>navigation.navigate("ProductList")} style={styles.fruit}>
                         {/* <View style={styles.fruit1}> */}
                             <Image style={styles.fruitimg} source={icons.fruitsimage}></Image>
                         {/* </View> */}

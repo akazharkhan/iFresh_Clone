@@ -46,22 +46,22 @@ const Home = ({navigation}) => {
                     <Paragraph style={styles.para1}>Shop by Category</Paragraph>
                 </View>
                 <View style={styles.fruitdry}>
-                    <View style={styles.fruit}>
+                    <TouchableOpacity style={styles.fruit} onPress={()=>navigation.navigate("ProductList")}>
                         {/* <View style={styles.fruit1}> */}
                             <Image style={styles.fruitimg} source={icons.fruitsimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
                             <Text style={{textAlign:'center'}}>FRUITS & VEGETABLES</Text>
                         </View>
-                    </View>
-                    <View style={styles.dry}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.dry}  onPress={()=>navigation.navigate("DryList")}>
                         {/* <View style={styles.dry1}> */}
                             <Image style={styles.dryimg} source={icons.dryimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
                             <Text style={{textAlign:'center'}}> DRY FRUITS </Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.Img}>
                     <Image style={styles.img} source={icons.swiper3}></Image>
@@ -96,7 +96,7 @@ const Home = ({navigation}) => {
                         </View>
                     </View>
                 </View>
-                <View style={{height:50,}}></View>
+                <View style={{height:30,}}></View>
 
 
 
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     menu: {
         width: "100%",
         padding: 8,
-        height: 50,
+        height: 40,
         backgroundColor: "#0AB252",
         flexDirection: "row",
         // width:200
@@ -164,23 +164,23 @@ const styles = StyleSheet.create({
     },
 
     imgmenu: {
-        height: 40,
+        height: 30,
         backgroundColor: "#17B455",
         color: "#17B455",
-        width: 40,
+        width: 30,
         tintColor:"white"
     }, para: {
-        fontSize: 30,
+        fontSize: 22,
         color: "white",
     },
     imgcart: {
-        height: 40,
+        height: 30,
         backgroundColor: "#17B455",
-        width: 40,
+        width: 30,
         tintColor:"white"
     },
     loc: {
-        height: 50,
+        height: 40,
         width: "100%",
         flexDirection: "row",
         backgroundColor: "gray",
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         width: 20
     },
     swiper: {
-        height: 150,
+        height: 100,
     },
     swipeimage: {
         width: "100%",
@@ -208,13 +208,13 @@ const styles = StyleSheet.create({
     shop: {
         // alignItems:'center'
         // width: "100%"
-        marginVertical:20
+        marginVertical:8
     },
     para1: {
         textAlign: "center",
     },
     fruitdry: {
-        marginVertical: 20,
+        marginVertical: 5,
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-around",
@@ -245,14 +245,14 @@ const styles = StyleSheet.create({
     },
     fruit2: {
         fontSize: 10,
-        marginTop: 10,
+        marginTop: 5,
         fontFamily: "600"
     },
     Img: {
         width: "100%",
         // width:700,
         // height: 150
-        marginBottom: 15,
+        marginBottom: 3,
 
     },
     img: {
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
         // borderColor: "white",
         // elevation: 2,
         // marginTop: 10,
-        marginBottom:10,
+        // marginBottom:10,
         // borderWidth: 1,
         padding:10,
         // elevation:2,

@@ -5,7 +5,6 @@ import ScrollContainer from '../../components/HOC/ScrollContainer'
 import Clickable from '../../components/HOC/Clickable'
 import Paragraph from '../../components/UI/Paragraph'
 import icons from '../../constants/icons'
-import Video from 'react-native-video'
 
 const ReferEarn = ({navigation}) => {
     const filter = () =>
@@ -36,11 +35,7 @@ const ReferEarn = ({navigation}) => {
           <Paragraph style={styles.para}>Refer Earn</Paragraph>
         </View>
       </View>
-    {/* <Video
-    source={{
-      uri:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-    }}
-    /> */}
+   
      
     </ViewContainer>
   )

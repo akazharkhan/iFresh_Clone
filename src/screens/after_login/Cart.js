@@ -32,11 +32,11 @@ const Cart = ({navigation}) => {
     <ViewContainer>
       <ScrollContainer>
       <View style={styles.container}>
-        <Clickable onPress={()=>navigation.navigate("Home")} style={styles.mainimg}>
+        <Clickable onPress={()=>navigation.goBack()} style={styles.mainimg}>
           <Image style={styles.image} source={icons.leftarrow}/>
         </Clickable>
         <View style={styles.mainpara}>
-          <Paragraph style={styles.para}>Favourite</Paragraph>
+          <Paragraph style={styles.para}>Cart</Paragraph>
         </View>
        
         <Clickable onPress={filter} style={styles.mainimg1}>
@@ -52,7 +52,7 @@ const Cart = ({navigation}) => {
         <Paragraph style={{color:"black",fontSize:22}}>Your Cart is empty</Paragraph>
         <Paragraph style={{color:"black",fontSize:15}}>You have no items in your shopping cart.</Paragraph>
         <Paragraph style={{color:"black",fontSize:15}}>Let's go buy something</Paragraph>
-        <UiButton  onPress={()=>navigation.navigate("Home")} style={{backgroundColor:"#0AB252",marginTop:20}}
+        <UiButton  onPress={()=>navigation.goBack()} style={{backgroundColor:"#0AB252",marginTop:20}}
         text='SHOP NOW'
         txtSize={18}
         ></UiButton>

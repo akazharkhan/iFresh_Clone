@@ -70,6 +70,14 @@ const StackNavigator = () => {
                 }}
 
             />
+            <Screen name='ProductCard'
+                // use getComponent instead of component for better speed 
+                getComponent={() => require('../screens/after_login/ProductCard').default}
+                options={{
+                    ...commonOptions
+                }}
+
+            />
              <Screen name='ReferEarn'
                 // use getComponent instead of component for better speed 
                 getComponent={() => require('../screens/after_login/ReferEarn').default}
@@ -78,6 +86,15 @@ const StackNavigator = () => {
                 }}
 
             />
+            <Screen name='DryList'
+                // use getComponent instead of component for better speed 
+                getComponent={() => require('../screens/after_login/DryList').default}
+                options={{
+                    ...commonOptions
+                }}
+
+            />
+           
         </Navigator>
     )
 }
