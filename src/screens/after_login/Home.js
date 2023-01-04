@@ -9,7 +9,7 @@ import Clickable from '../../components/HOC/Clickable'
 
 const Home = ({navigation}) => {
     return (
-        <ViewContainer>
+        <ViewContainer style={{backgroundColor:"white"}}>
             <View style={styles.menu}>
                 <TouchableOpacity onPress={()=>navigation.toggleDrawer()} style={styles.menu1}>
                     <Image style={styles.imgmenu} source={icons.menuimage}></Image>
@@ -33,7 +33,9 @@ const Home = ({navigation}) => {
                         <Paragraph>Deliver To : Basni / Jodhpur</Paragraph>
                     </View>
                 </View>
-                <Swiper style={styles.swiper}
+                <Swiper 
+                //   activeDot={false}
+                style={styles.swiper}
                     autoplayTimeout={2}
                     autoplay={true}>
                     <Image style={styles.swipeimage} source={icons.swiper1}></Image>
@@ -46,22 +48,22 @@ const Home = ({navigation}) => {
                     <Paragraph style={styles.para1}>Shop by Category</Paragraph>
                 </View>
                 <View style={styles.fruitdry}>
-                    <TouchableOpacity style={styles.fruit} onPress={()=>navigation.navigate("ProductList")}>
+                    <Clickable style={styles.fruit} onPress={()=>navigation.navigate("ProductList")}>
                         {/* <View style={styles.fruit1}> */}
                             <Image style={styles.fruitimg} source={icons.fruitsimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text style={{textAlign:'center'}}>FRUITS & VEGETABLES</Text>
+                            <Text style={{textAlign:'center',fontSize:12,marginTop:5}}>FRUITS & VEGETABLES</Text>
                         </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.dry}  onPress={()=>navigation.navigate("DryList")}>
+                    </Clickable>
+                    <Clickable style={styles.dry}  onPress={()=>navigation.navigate("DryList")}>
                         {/* <View style={styles.dry1}> */}
                             <Image style={styles.dryimg} source={icons.dryimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text style={{textAlign:'center'}}> DRY FRUITS </Text>
+                            <Text style={{textAlign:'center',marginTop:5,fontSize:12}}> DRY FRUITS </Text>
                         </View>
-                    </TouchableOpacity>
+                    </Clickable>
                 </View>
                 <View style={styles.Img}>
                     <Image style={styles.img} source={icons.swiper3}></Image>
@@ -80,17 +82,17 @@ const Home = ({navigation}) => {
                         </View>
                     </View>
                     <View style={styles.product}>
-                        <View style={styles.chilli}>
+                        <Clickable onPress={()=>navigation.navigate("GreenChilli")} style={styles.chilli}>
                             <Image style={styles.chiliimg} source={icons.greenimage}></Image>
                             <Paragraph style={styles.chilitext}>Green chilli</Paragraph>
-                        </View>
+                        </Clickable>
                         <View style={styles.otherproduct}>
                             <View style={styles.onion}>
                                 <Image style={styles.onionimg} source={icons.onionimage}></Image>
                                 <Paragraph style={styles.oniontext}>An Onion</Paragraph>
                             </View>
                             <View style={styles.onion}>
-                                <Image style={styles.onionimg} source={icons.potatoimage}></Image>
+                                <Image style={styles.onionimg} source={icons.potatoveg}></Image>
                                 <Paragraph style={styles.potatotext}>A Potato</Paragraph>
                             </View>
                         </View>
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderColor: "white",
-        elevation: 1,
+        elevation: 0.5,
 
     }
     ,
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"space-around",
         margin:3,
-        elevation:1
+        elevation:0.8
     },
     menu: {
         width: "100%",
@@ -214,34 +216,42 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     fruitdry: {
-        marginVertical: 5,
+        // marginVertical: 5,
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-around",
     },
     fruit: {
-        padding:10,
+        padding:8,
+        height:140,
         alignItems: "center",
         justifyContent: "center",
-        elevation: 2,
+        elevation: 0.5,
         width: "45%",
         borderColor: "white",
+        marginBottom:15,
+        marginTop:10
     },
     fruitimg: {
-        width: 100,
-        height: 100,
+        width: 70,
+        height: 70,
+        tintColor:"#17B455",
     },
     dry: {
-        padding:10,
+        height:140,
+        padding:8,
         alignItems: "center",
-        elevation: 2,
+        elevation: 0.5,
         width: "45%",
         justifyContent: "center",
         borderColor: "white",
+        marginBottom:15,
+        marginTop:10
     },
     dryimg: {
-        width: 100,
-        height: 100,
+        width: 60,
+        tintColor:"#17B455",
+        height: 60,
     },
     fruit2: {
         fontSize: 10,
@@ -283,7 +293,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderColor: "white", marginBottom: 20,
         margin: 10,
-        elevation: 1,
+        elevation: 0.8,
         borderWidth: 1
     },
     main: {

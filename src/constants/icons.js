@@ -72,6 +72,20 @@ export default {
     sapota:require('../assest/Images/sapota.jpg'),
     smallpotato:require('../assest/Images/smallpotato.jpg'),
     straw:require('../assest/Images/straw.png'),
+    cross:require('../assest/Images/cross.png'),
+    watermelon:require('../assest/Images/watermelon.jpg'),
+    akhrot:require('../assest/Images/akhrot.jpg'),
+    almonds:require('../assest/Images/almonds.jpg'),
+    chia:require('../assest/Images/chia.jpg'),
+    halim:require('../assest/Images/halim.jpg'),
+    irani:require('../assest/Images/irani.jpg'),
+    kaju:require('../assest/Images/kaju.jpg'),
+    walnut:require('../assest/Images/walnut.jpg'),
+    jumbo:require('../assest/Images/jumbo.jpg'),
+    inshell:require('../assest/Images/inshell.jpg'),
+    similar:require('../assest/Images/similar.png'),
+
+
     
 
 }

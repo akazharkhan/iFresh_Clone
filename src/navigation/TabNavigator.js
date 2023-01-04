@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View, StyleSheet } from 'react-native';
 import icons from '../constants/icons';
@@ -6,12 +6,25 @@ import Home from '../screens/after_login/Home';
 import Favourites from '../screens/after_login/Favourites';
 import Category from '../screens/after_login/Category';
 import Cart from '../screens/after_login/Cart';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
     const { Navigator, Screen } = Tab;
 
+    const [totalProductsInCart,setTotalProductsInCart] = useState(0);
+    useEffect(()=>{
+        getAndSetQuantity();
+    },[])
+
+    const getAndSetQuantity = async()=>{
+          let cartProducts =await  AsyncStorage.getItem('cart');
+          if(cartProducts){
+            let parsedCartProducts = JSON.parse(cartProducts)
+            setTotalProductsInCart(parsedCartProducts.length);
+          }
+    }
     return (
         <Navigator
             initialRouteName="Home"
@@ -91,7 +104,7 @@ const TabNavigator = () => {
                 component={Cart}
                 options={{
                     headerShown: false,
-                    tabBarBadge: 1,
+                    tabBarBadge: totalProductsInCart,
                     tabBarLabel: 'Cart',
                     tabBarIcon: ({ focused }) => (
                         <View style={{

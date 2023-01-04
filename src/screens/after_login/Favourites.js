@@ -1,14 +1,32 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import ViewContainer from '../../components/HOC/ViewContainer'
 import icons from '../../constants/icons'
 import Paragraph from '../../components/UI/Paragraph'
 import Clickable from '../../components/HOC/Clickable'
-const Favourites = ({navigation}) => {
+import FavouriteCard from './FavouriteCard'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+const Favourites = ({ navigation }) => {
+  const [productListData, setProductListData] = useState([]);
+
+
+  const getFavProducts = async () => {
+    let favProducts = await AsyncStorage.getItem('favourites');
+    setProductListData(JSON.parse(favProducts))
+  }
+  useEffect(() => {
+    getFavProducts();
+    console.warn("ASHJA", productListData);
+  }, [])
+
+
+
+
+
   return (
     <ViewContainer>
       <View style={styles.container}>
-        <Clickable onPress={()=>navigation.navigate("Home")} style={styles.mainimg}>
+        <Clickable onPress={() => navigation.navigate("Home")} style={styles.mainimg}>
           <Image style={styles.image} source={icons.leftarrow} />
         </Clickable>
         <View style={styles.mainpara}>
@@ -21,11 +39,21 @@ const Favourites = ({navigation}) => {
           <Image style={styles.image1} source={icons.filter} />
         </Clickable>
       </View>
-      <View style={{  height: "95%", alignItems: "center", justifyContent: "center" }}>
-        <Paragraph size={22} color={ "#0AB252"} >No Favourites Found</Paragraph>
-      </View>
+      {
+        productListData === null ? (
+          <View style={{ height: "95%", alignItems: "center", justifyContent: "center" }}>
+            <Paragraph size={22} color={"#0AB252"} >No Favourites Found</Paragraph>
+          </View>
+        ) : (
+          <FlatList
+            contentContainerStyle={{}}
+            data={productListData}
+            renderItem={({ item, index }) => <FavouriteCard item={item} key={index} />}
+          />
+        )
+      }
 
-    </ViewContainer>
+    </ViewContainer >
   )
 }
 
@@ -64,7 +92,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: "white",
-  }, 
+  },
   image2: {
     width: 20,
     height: 20,

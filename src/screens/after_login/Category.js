@@ -22,15 +22,15 @@ const Category = ({navigation}) => {
                             <Image style={styles.fruitimg} source={icons.fruitsimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text style={{textAlign:'center'}}>FRUITS & VEGETABLES</Text>
+                            <Text style={{textAlign:'center',fontSize:12}}>FRUITS & VEGETABLES</Text>
                         </View>
                     </Clickable>
-                    <Clickable style={styles.dry}>
+                    <Clickable onPress={()=>navigation.navigate("DryList")} style={styles.dry}>
                         {/* <View style={styles.dry1}> */}
                             <Image style={styles.dryimg} source={icons.dryimage}></Image>
                         {/* </View> */}
                         <View style={styles.fruit2}>
-                            <Text style={{textAlign:'center'}}> DRY FRUITS </Text>
+                            <Text style={{textAlign:'center',fontSize:12}}> DRY FRUITS </Text>
                         </View>
                     </Clickable>
                 </View>
@@ -69,25 +69,27 @@ fruit: {
     padding:10,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 2,
-    width: "45%",
+    elevation: 0.5,
+    width: "47%",
     borderColor: "white",
 },
 fruitimg: {
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
+    tintColor:"#0AB252"
 },
 dry: {
     padding:10,
     alignItems: "center",
-    elevation: 2,
-    width: "45%",
+    elevation: 0.5,
+    width: "47%",
     justifyContent: "center",
     borderColor: "white",
 },
 dryimg: {
-    width: 100,
-    height: 100,
+    width: 70,
+    tintColor:"#0AB252",
+    height: 70,
 },
 fruit2: {
     fontSize: 10,

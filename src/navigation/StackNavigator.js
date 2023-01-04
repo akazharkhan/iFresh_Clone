@@ -94,6 +94,22 @@ const StackNavigator = () => {
                 }}
 
             />
+            <Screen name='GreenChilli'
+                // use getComponent instead of component for better speed 
+                getComponent={() => require('../screens/after_login/GreenChilli').default}
+                options={{
+                    ...commonOptions
+                }}
+
+            />
+             <Screen name='FavouriteCard'
+                // use getComponent instead of component for better speed 
+                getComponent={() => require('../screens/after_login/FavouriteCard').default}
+                options={{
+                    ...commonOptions
+                }}
+
+            />
            
         </Navigator>
     )
